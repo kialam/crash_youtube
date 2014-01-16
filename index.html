@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Crash - Youtube</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--[if lt IE 9]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	 <style>
+            
+            .container { max-width: 810px; height: 142px; }
+            .ctsModules { width: 99%; padding: 1% 1% 1% 0; }
+            .ctsHeader { width: 100%; height: 39px; margin: 0 auto; margin-top: -8px; background: url(images/bg-head.png) center center scroll no-repeat; 
+                            -moz-transition:opacity .5s;
+                            -webkit-transition:opacity .5s;
+                            -o-transition:opacity .5s;
+                            transition:opacity .5s; }
+            .ctsModulesContainer { width: 100%; margin-top: 7px; 
+                            -moz-transition:opacity .5s;
+                            -webkit-transition:opacity .5s;
+                            -o-transition:opacity .5s;
+                            transition:opacity .5s;
+                            text-align: center; }
+            .ctsModulesContainer p { text-align: center; vertical-align: central; margin-top: 15px; }
+            .ctsModule { display: inline-block; margin: 0 5px 9px; position: relative; *display: inline; zoom: 1;}
+            .ctsThumbnail { width: 147px; height: 87px; position: relative; top: 5px; left: 5px; -webkit-filter: grayscale(50%); -moz-filter: grayscale(50%); -ms-filter: grayscale(50%); -o-filter: grayscale(50%); filter: grayscale(50%); }
+            .ctsThumbnailOverlay { width: 157px; height: 98px; position: absolute; top: 0; left: 0; background: url(images/border.png) scroll no-repeat; }
+            .ctsThumbnailOverlay:hover { -webkit-filter: invert(50%); -moz-filter: invert(50%); -ms-filter: invert(50%); -o-filter: invert(50%); filter: invert(50%); }
+            
+            .thanks { background: url(images/thanks.png) scroll no-repeat; opacity: 0; background-size: contain; }
+            .hidden { opacity: 0;  }
+            .show { opacity: 1; }
+            
+            .hovered { -webkit-filter: grayscale(0%); -moz-filter: grayscale(0%); -ms-filter: grayscale(0%); -o-filter: grayscale(0%); filter: grayscale(0%); }
+            .clear { clear: both; }
+            
+            body { overflow:hidden; }
+        </style>
+</head>
+<body>
+	<?php
+                    
+                        $videos = array(
+                            array(
+                                'name' => 'Office Thief',
+                                'content_id' => '14400',
+                                'link' => 'https://www.youtube.com/watch?v=oMdwJ7fyp00&amp;feature=youtube_gdata_player',
+                                'thumbnail' => 'images/office.png'
+                            ),
+                            array(
+                                'name' => 'Breakroom',
+                                'content_id' => '14399',
+                                'link' => 'https://www.youtube.com/watch?v=MoANeCLWOjI&amp;feature=youtube_gdata_player',
+                                'thumbnail' => 'images/ostrich.png'
+                            ),
+                            array(
+                                'name' => 'Finger',
+                                'content_id' => '14398',
+                                'link' => 'https://www.youtube.com/watch?v=ugo7Y2lRsxc&amp;feature=youtube_gdata_player',
+                                'thumbnail' => 'images/finger.png'
+                            ),
+                            array(
+                                'name' => 'Time',
+                                'content_id' => '14397',
+                                'link' => 'https://www.youtube.com/watch?v=Y-P0Hs0ADJY&amp;feature=youtube_gdata_player',
+                                'thumbnail' => 'images/time.png'
+                            ),
+                            array(
+                                'name' => 'Cowboy',
+                                'content_id' => '14396',
+                                'link' => 'https://www.youtube.com/watch?v=FHY5pwgCY3w&amp;feature=youtube_gdata_player',
+                                'thumbnail' => 'images/cowboy.png'
+                            )
+                        );
+                        
+                        shuffle($videos);
+                        foreach($videos as $video) {
+                            echo apply_template($video);
+                        }
+                        
+                        function apply_template($video) {
+                            $cid = $video['content_id'];
+                            $link = $video['link'];
+                            $t = $video['thumbnail'];
+                            $template = <<<TEMPLATE
+                                <div class="ctsModule">
+                                    <a class="ctsVote" href="#" data-contentid="$cid" data-link="$link">
+                                        <img class="ctsThumbnail" src="$t" alt="thumbnail">
+                                        <div class="ctsThumbnailOverlay"></div>
+                                    </a>                            
+                                </div>
+TEMPLATE;
+                            return $template;
+                        }
+                        
+                        
+                    ?>
+                    
+                    <div class="clear"></div></div>
+            </div>
+        </div>
+        
+    <div id="fb-root"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+</html>
